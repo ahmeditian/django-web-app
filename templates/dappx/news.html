@@ -1,0 +1,98 @@
+{% extends "dappx/base.html" %}
+{% block body_block %}
+<div class="container">
+    <h1>TechCrunch</h1>
+    <h1></h1>
+    <div class="row" id="parent">
+        {% for x in api.articles %}
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <img src="{{x.urlToImage}}" class="card-img-top" alt="{{x.source.name}}" width="800" height="400">
+                <div class="card-body">
+                    <h5 class="card-title">{{x.title}}</h5>
+                    <p class="card-text">{{x.descriptors|truncatechars:150}}</p>
+                    <a href="{{x.url}}" target="_blank" class="btn btn-primary">Read More</a>
+                    <h1></h1>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        setInterval(timeout, 1000);
+    });
+
+     function timeout() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=6533ff6ff7e644539cb48f5d9888fb1b',
+            dataType: 'json',
+            success: function (json) {
+                console.log(json)
+                removecards()
+                addcards(json.articles)
+            }
+        });
+    }
+    function removecards() {
+        $(".row>.col-sm").remove()
+    }
+    function addcards(data) {
+        let parent = document.getElementById("parent")
+        for(let x of data) {
+            var col_1 = document.createElement("div");
+            col_1.setAttribute("class", "col-sm")
+
+            var col_2 = document.createElement("div");
+            col_2.setAttribute("class", "card")
+            col_2.setAttribute("style", "width: 18rem;")
+
+            var col_3 = document.createElement("div");
+            col_3.setAttribute("class", "card-body")
+
+            var col_4 = document.createElement("h5");
+            col_4.setAttribute("class", "card-title")
+            if (x.title && x.title.length > 150) {
+                x.title = x.title.substring(0, 148)
+                x.title += "..."
+            }
+            var textnode = document.createTextNode(x.title);
+            col_4.appendChild(textnode)
+
+            var col_5 = document.createElement("p");
+            col_5.setAttribute("class", "card-text")
+
+            var col_6 = document.createElement("a");
+            col_6.setAttribute("class", "btn btn-primary")
+            col_6.setAttribute("href", x.url)
+            col_6.setAttribute("target", "_blank")
+            var textnode = document.createTextNode("Read more");
+            col_6.appendChild(textnode)
+
+            var col_7 = document.createElement("h1")
+
+            var img = document.createElement("img");
+            img.setAttribute("src", "btn btn-primary")
+            img.setAttribute("class", "card-img-top")
+            img.setAttribute("src", x.urlToImage)
+            img.setAttribute("alt", x.source.name)
+            img.setAttribute("width", "800")
+            img.setAttribute("height", "400")
+
+
+            col_1.appendChild(col_2)
+            col_2.appendChild(img)
+            col_2.appendChild(col_3)
+            col_1.appendChild(col_2)
+            col_3.appendChild(col_4)
+            col_3.appendChild(col_5)
+            col_3.appendChild(col_6)
+            col_3.appendChild(col_7)
+            parent.appendChild(col_1)
+
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "dappx/base.html" %}
+{% load static %}
+{% block body_block %}
+<div class="container">
+    <div class="jumbotron">
+        {% if submitted %}
+        <h1>Thank you for the feedback...</h1>
+        {% else %}
+        <h1>Feedback...</h1>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ fb_form.as_p }}
+            <input type="submit" name="" value="Submit">
+        </form>
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
