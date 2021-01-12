@@ -30,4 +30,5 @@ git clone https://github.com/ahmeditian/django-web-app.git
   python manage.py runserver
 
 ### Sample Newsfeed 
-![Screenshot](https://github.com/ahmeditian/django-web-app/blob/main/screenshots/newsfeed.PNG)
+
+![alt text](screenshots/newsfeed.png)
