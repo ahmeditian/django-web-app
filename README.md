@@ -28,3 +28,6 @@ git clone https://github.com/ahmeditian/django-web-app.git
 5. Run the Micro Service
 ```
   python manage.py runserver
+
+### Sample Newsfeed 
+![alt text](https://github.com/ahmeditian/django-web-app/blob/main/screenshots/newsfeed.PNG)
