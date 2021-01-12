@@ -31,4 +31,4 @@ git clone https://github.com/ahmeditian/django-web-app.git
 
 ### Sample Newsfeed 
 
-![alt text](screenshots/newsfeed.png)
+![alt text](screenshots/newsfeed.PNG)
