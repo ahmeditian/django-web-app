@@ -1,7 +1,7 @@
 # Django Web App
 A simple web application
 
-### oftware Pre-Requisites
+### Software Pre-Requisites
 - Miniconda or Anaconda
 
 ### Installation
