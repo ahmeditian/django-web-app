@@ -18,7 +18,7 @@ git clone https://github.com/ahmeditian/django-web-app.git
 ```
   pip install -r requirements.txt
 ```
-4. Install the Reusable Components. Please refer [optima-intake-pyreusable-components](https://github.com/CognizantStudio/optima-intake-pyreusable-comp.git) for additional info
+4. Migrate the SQL dependencies
 ```
   python manage.py migrate
   python manage.py makemigrations dappx
